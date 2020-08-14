@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Executes at build-time at dockerhub, and is triggered when a 
+# commit is pushed to github.
+
+# ex: nsquare-go
+COMPUTE=${DOCKER_TAG%-*} #nsquare
+LANG=${DOCKER_TAG#*-} #go
+
+echo "COMPUTE=$COMPUTE"
+docker build --build-arg COMPUTE=$COMPUTE -t $DOCKER_REPO:$DOCKER_TAG .
