@@ -40,13 +40,13 @@ python:3.8-slim-buster-nsquare.computed: 710
 
 1. Define the implementation name, this name is used with the files to implement.
 1. Create a directory `/impl/$name`
-  * Add a readme following this [example](/impl/nsquare).
-  * Add a docker-compose file following this [example](/impl/nsquare/docker-compose.yml).
+    * Add a readme following this [example](/impl/nsquare).
+    * Add a docker-compose file following this [example](/impl/nsquare/docker-compose.yml).
 1. For each language to test, implement the *compute* function:
-  * go: `/base/go/$name.go`
-  * java: `/base/java/src/main/java/compute/$name.java`
-  * python: `/base/python/$name.py`
-  * ruby: `/base/rust/src/$name.rs`
+    * go: `/base/go/$name.go`
+    * java: `/base/java/src/main/java/compute/$name.java`
+    * python: `/base/python/$name.py`
+    * ruby: `/base/rust/src/$name.rs`
 1. Test and send a Pull Request.
 
 ## [License](LICENSE)
