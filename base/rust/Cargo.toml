@@ -1,0 +1,8 @@
+[package]
+name = "rainbow"
+version = "0.1.0"
+
+[dependencies]
+redis = "0.17.0"
+log = "0.4"
+simple_logger = "1.6.0"
