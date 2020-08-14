@@ -3,11 +3,9 @@
 # Executes at build-time at dockerhub, and is triggered when a 
 # commit is pushed to github.
 
-echo "Override build"
-
 # ex: nsquare-go
 COMPUTE=${DOCKER_TAG%-*} #nsquare
 LANG=${DOCKER_TAG#*-} #go
 
 echo "COMPUTE=$COMPUTE"
-docker build --build-arg COMPUTE=$COMPUTE -t $IMAGE_NAME .
+docker build --build-arg COMPUTE=$COMPUTE -t $DOCKER_REPO:$DOCKER_TAG .
