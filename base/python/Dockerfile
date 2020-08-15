@@ -1,4 +1,4 @@
-ARG BASE
+ARG BASE=python:latest
 FROM $BASE
 WORKDIR /code
 
