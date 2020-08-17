@@ -27,8 +27,8 @@ Example of output:
 java-nsquare.computed: 4200
 go-nsquare.computed: 4120
 rust-nsquare.computed: 4420
-ruby:alpine-nsquare.computed: 60
-python:3.8-alpine-nsquare.computed: 40
+ruby-nsquare.computed: 60
+python-nsquare.computed: 40
 ```
 
 You can also customize the docker-compose file to test different base images for a language:
