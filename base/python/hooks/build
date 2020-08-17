@@ -4,11 +4,11 @@
 BASE="${DOCKER_TAG#*python-}"
 if [ "$BASE" = "$DOCKER_TAG" ]; then
     # ex: nsquare-python
-    echo docker build --build-arg COMPUTE=${DOCKER_TAG%-python*} \
+    docker build --build-arg COMPUTE=${DOCKER_TAG%-python*} \
         -t $IMAGE_NAME .
 else
     # ex: nsquare-python-3.8-alpine, BASE=python:3.8-alpine
-    echo docker build --build-arg COMPUTE=${DOCKER_TAG%-python*} \
+    docker build --build-arg COMPUTE=${DOCKER_TAG%-python*} \
         --build-arg BASE="python:$BASE" \
         -t $IMAGE_NAME .
 fi

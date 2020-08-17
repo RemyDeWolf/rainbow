@@ -1,2 +1,14 @@
 #!/bin/bash
-docker build --build-arg COMPUTE=${DOCKER_TAG%-*} -t $IMAGE_NAME .
+
+# check if base image is specified
+BASE="${DOCKER_TAG#*ruby-}"
+if [ "$BASE" = "$DOCKER_TAG" ]; then
+    # ex: nsquare-ruby
+    docker build --build-arg COMPUTE=${DOCKER_TAG%-ruby*} \
+        -t $IMAGE_NAME .
+else
+    # ex: nsquare-ruby-slim-buster, BASE=ruby:slim-buster
+    docker build --build-arg COMPUTE=${DOCKER_TAG%-ruby*} \
+        --build-arg BASE="ruby:$BASE" \
+        -t $IMAGE_NAME .
+fi
