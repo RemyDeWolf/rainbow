@@ -1,0 +1,25 @@
+# access with `kubectl port-forward deployment/redis-web 5000 5000`
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-web
+  labels:
+    app: redis-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redis-web
+  template:
+    metadata:
+      labels:
+        app: redis-web
+    spec:
+      nodeSelector:
+        runner: main
+      containers:
+      - name: redis-web
+        image: remydewolf/rainbow:redis-web
+        ports:
+        - containerPort: 5000

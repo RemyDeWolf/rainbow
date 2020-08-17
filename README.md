@@ -11,7 +11,9 @@
 
 * [nsquare](/impl/nsquare): n square operation on an array.
 
-## How to use?
+## How to use rainbow?
+
+### Run locally using docker-compose
 
 1. Select the [implementation](/impl) to test
 1. Run `docker-compose build` to build the images
@@ -35,6 +37,10 @@ python:3.8-buster-nsquare.computed: 700
 python:3.8-alpine-nsquare.computed: 660
 python:3.8-slim-buster-nsquare.computed: 710
 ```
+
+### Run on kubernetes
+
+See [Run the rainbow tests in the cloud](/k8s/README.md).
 
 ## How to add an implementation?
 
