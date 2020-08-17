@@ -1,0 +1,36 @@
+{{- $root := . -}}
+
+{{- range $image := .Values.images }}
+  {{ $app := (split ":" $image)._1 }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $app }}
+  labels:
+    app: {{ $app }}
+spec:
+  replicas: {{ $root.Values.replicas }}
+  selector:
+    matchLabels:
+      app: {{ $app }}
+  template:
+    metadata:
+      labels:
+        app: {{ $app }}
+    spec:
+      nodeSelector:
+        runner: {{ $app }}
+      containers:
+      - name: {{ $app }}
+        image: {{ $image }}
+        resources:
+          requests:
+            cpu: 5m
+            memory: 10Mi
+        env: 
+        {{- range $envvar := $root.Values.env }}
+        - name: {{ $envvar.name }}
+          value: "{{ $envvar.value }}"
+        {{- end }}
+{{- end }}
