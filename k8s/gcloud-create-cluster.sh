@@ -33,10 +33,12 @@ for image in $images; do
     #image: .../rainbow:nsquare-go
     #app: nsquare-go
     app=${image##*:}
+    # '.' is not allowed in node pool name
+    name=${app//./-}
     echo "Creating node pool $cluster_name with $num_nodes $machine_type"
-    gcloud container node-pools create $app \
+    gcloud container node-pools create $name \
     --cluster=$cluster_name \
-    --node-labels=runner=$app \
+    --node-labels=runner=$name \
     --machine-type=$machine_type \
     --num-nodes=$num_nodes
 done

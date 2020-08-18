@@ -1,7 +1,7 @@
 {{- $root := . -}}
 
 {{- range $image := .Values.images }}
-  {{ $app := (split ":" $image)._1 }}
+  {{ $app := (split ":" $image)._1  | replace "." "-" }}
 ---
 apiVersion: apps/v1
 kind: Deployment
