@@ -1,0 +1,30 @@
+
+# duration of the tests
+duration_sec: 600
+
+# name of the cluster to create
+cluster_name: rainbow-cluster
+
+# machine type to use
+machine_type: e2-standard-2
+# number of nodes to create per image
+num_nodes: 1
+# number of replicas to deploy for each image
+replicas: 3
+
+# container environment variables
+env:
+  - name: BATCH_SIZE
+    value: "50"
+  - name: HASHTABLE_SIZE
+    value: "10000"
+  - name: READ_COUNT
+    value: "1000000"
+
+# images to test
+images:
+  - remydewolf/rainbow:hashtable-go
+  - remydewolf/rainbow:hashtable-java
+  - remydewolf/rainbow:hashtable-python
+  - remydewolf/rainbow:hashtable-ruby
+  - remydewolf/rainbow:hashtable-rust
