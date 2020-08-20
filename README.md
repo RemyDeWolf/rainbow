@@ -10,6 +10,7 @@
 ## Implementations
 
 * [nsquare](/impl/nsquare): n square operation on an array.
+* [hashtable](/impl/hashtable): hashtable random access.
 
 ## How to use rainbow?
 
@@ -53,7 +54,8 @@ See [Run the rainbow tests in the cloud](/k8s/README.md).
     * java: `/base/java/src/main/java/compute/$name.java`
     * python: `/base/python/$name.py`
     * ruby: `/base/rust/src/$name.rs`
-1. Test and send a Pull Request.
+1. [Optional] Add kubernetes tests following this [example](k8s/tests/nsquare.yaml). If you have some test results, include them to the readme.
+1. Send a Pull Request.
 
 ## [License](LICENSE)
 
