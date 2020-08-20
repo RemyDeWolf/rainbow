@@ -1,6 +1,8 @@
 
 mod compute;
 extern crate redis;
+extern crate uuid;
+extern crate rand;
 
 use std::env;
 use compute::do_compute;

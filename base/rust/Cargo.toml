@@ -6,3 +6,8 @@ version = "0.1.0"
 redis = "0.17.0"
 log = "0.4"
 simple_logger = "1.6.0"
+rand = "0.7"
+
+[dependencies.uuid]
+version="0.8"
+features = ["v4"]
