@@ -71,6 +71,23 @@ MACHINE_TYPE=e2-standard-2 (2xCPU 8GB)
 | java | 4 | 60 |
 | rust | 4 | 48 |
 
+Redo first run using a worker pool.
+
+```
+NSQUARE_ARRAY_SIZE=2000
+BATCH_SIZE=20
+DURATION=10min
+MACHINE_TYPE=e2-standard-2 (2xCPU 8GB)
+```
+
+| Lang | Workers | Replicas | Count |
+| --- | --- |  --- | --- |
+| go | 10 | 4 | 164640 |
+| java | 10 | 4 | 47740 |
+| python | 10 | 4 | 480 |
+| ruby | 10 | 4 | 800 |
+| rust | 10 | 4 | 125840 |
+
 ### Node Metrics
 
 * 1st spike: 1 replica, array size 2,000

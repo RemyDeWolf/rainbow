@@ -111,6 +111,25 @@ MACHINE_TYPE=e2-standard-2 (2xCPU 8GB)
 | rust | 1 | 17 |
 | rust | 3 | 25 |
 
+Forth run: medium size, 100/1 read/write, using a worker pool.
+
+```
+BATCH_SIZE=50
+WORKERS=5
+HASHTABLE_SIZE=10000
+READ_COUNT=1000000
+DURATION=10min
+MACHINE_TYPE=e2-standard-2 (2xCPU 8GB)
+```
+
+| Lang | Workers | Replicas | Count |
+| --- | --- |  --- | --- |
+| go | 3 | 2 | 7300 |
+| java | 3 | 2 | 16250 |
+| python | 3 | 2 | 300 |
+| ruby | 3 | 2 | 1200 |
+| rust | 3 | 2 | 11950 |
+
 ### Node Metrics
 
 * 1st spike: 1 replica, write/read 50,000/500,000
