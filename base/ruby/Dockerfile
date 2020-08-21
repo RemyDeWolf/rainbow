@@ -1,7 +1,7 @@
 ARG BASE=ruby:latest
 FROM $BASE
 
-RUN gem install redis
+RUN gem install redis concurrent-ruby
 COPY main.rb .
 
 # copy the script to compute
