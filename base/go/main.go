@@ -6,6 +6,7 @@ import (
 	"log"
 	"os"
 	"strconv"
+	"sync"
 
 	"github.com/go-redis/redis/v8"
 )
@@ -19,14 +20,37 @@ func main() {
 	rdb := redis.NewClient(&redis.Options{
 		Addr: "redis:6379",
 	})
-	batchSize, _ := strconv.Atoi(os.Getenv("BATCH_SIZE"))
-	count := 0
-	for {
-		compute()
-		count++
-		if count%batchSize == 0 {
-			rdb.IncrBy(ctx, key, int64(batchSize))
-			log.Printf("Computed %v operations", count)
+	batchSize, _ := strconv.Atoi(getEnv("BATCH_SIZE", "1"))
+	workers, _ := strconv.Atoi(getEnv("WORKERS", "1"))
+
+	var wg sync.WaitGroup
+
+	runCompute := func(n int) {
+		log.Printf("Starting worker [%v]", n)
+		count := 0
+		for {
+			compute()
+			count++
+			if count%batchSize == 0 {
+				rdb.IncrBy(ctx, key, int64(batchSize))
+				log.Printf("[%v] Computed %v operations", n, count)
+			}
 		}
 	}
+
+	//create the go routines
+	for i := 0; i < workers; i++ {
+		wg.Add(1)
+		go runCompute(i)
+	}
+
+	wg.Wait()
+
+}
+
+func getEnv(key string, defaultVal string) string {
+	if value, exists := os.LookupEnv(key); exists {
+		return value
+	}
+	return defaultVal
 }
