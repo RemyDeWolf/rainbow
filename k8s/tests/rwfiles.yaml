@@ -1,0 +1,32 @@
+
+# duration of the tests
+duration_sec: 600
+
+# name of the cluster to create
+cluster_name: rainbow-cluster
+
+# machine type to use
+machine_type: e2-standard-2
+# number of nodes to create per image
+num_nodes: 1
+# number of replicas to deploy for each image
+replicas: 1
+
+# container environment variables
+env:
+  - name: BATCH_SIZE
+    value: "5"
+  - name: WRITES
+    value: "100"
+  - name: READS
+    value: "200000"
+  - name: FILE_SIZE
+    value: "10000"
+
+# images to test
+images:
+  - remydewolf/rainbow:rwfiles-go
+  - remydewolf/rainbow:rwfiles-java
+  - remydewolf/rainbow:rwfiles-python
+  - remydewolf/rainbow:rwfiles-ruby
+  - remydewolf/rainbow:rwfiles-rust
