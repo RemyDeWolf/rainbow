@@ -36,6 +36,11 @@ FROM alpine:latest
 
 RUN addgroup -g 1000 rainbow
 RUN adduser -D -s /bin/sh -u 1000 -G rainbow rainbow
+
+# directory for application files
+RUN mkdir /data
+RUN chown -R 1000 /data
+
 WORKDIR /home/rainbow/bin/
 COPY --from=cargo-build /usr/src/rainbow/target/x86_64-unknown-linux-musl/release/rainbow .
 RUN chown rainbow:rainbow rainbow

@@ -18,6 +18,7 @@ FROM alpine:latest
 RUN apk --update add openjdk11-jre
 
 RUN mkdir /app
+RUN mkdir /data
 ARG COMPUTE
 ENV COMPUTE=$COMPUTE
 COPY --from=build /home/gradle/src/build/libs/*.jar /app/compute.jar

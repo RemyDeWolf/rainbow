@@ -13,6 +13,8 @@ Generate an array of size n and compute a n square operation on it.
 ## Example of implementation
 
 ```python
+# pyton code
+
 def compute():
     size = int(os.environ['NSQUARE_ARRAY_SIZE'])
     input = [0] * size

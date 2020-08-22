@@ -11,5 +11,6 @@ ENV COMPUTE=$COMPUTE
 
 ARG BASE
 ENV BASE=$BASE
+RUN mkdir /data
 
 ENTRYPOINT ["ruby", "main.rb"]
