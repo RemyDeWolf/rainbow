@@ -93,9 +93,10 @@ These docker images can be deployed to Kubernetes. By using dedicated nodes with
 Every time a computation is done, a redis key is incremented.  
 The values of these keys measure the language efficiency when running on containers.  
   
-
-![architecture](/img/architecture.png)  
-
+<p align="center">
+  <img src="/img/architecture.png">
+</p>
+  
 To recap, here are the various components:
 
 | Name | Diff | Comments |
