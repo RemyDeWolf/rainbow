@@ -62,7 +62,11 @@ public class Main {
         LOGGER.info(String.format("Starting worker [%s]", n));
         int count = 0;
         while (true){
-            compute.compute();
+            try{
+                compute.compute();
+            }catch(Exception e){
+                e.printStackTrace();
+            }
             count++;
             if (count%batchSize == 0){
                 jedis.incrBy(key, batchSize);
