@@ -90,8 +90,8 @@ Rainbow packages the various implementations in docker images.
 These docker images can be deployed to Kubernetes. By using dedicated nodes with identical specifications, we can compare the performance of the language.  
 
 Every time a computation is done, a redis key is incremented.  
-The values of these keys measure the language efficiency when running on containers.
-![architecture](/img/architecture.png)
+The values of these keys measure the language efficiency when running on containers.  
+![architecture](/img/architecture.png)  
 
 To recap, here are the various components:
 
