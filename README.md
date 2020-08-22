@@ -23,7 +23,7 @@ But would it be possible to have a common base and only change the language used
 If every characteristic is a color, the idea of Rainbow is to look at the full spectrum of colors and only compare the output.  
 
 Rainbow is a framework to test and compare simple implementations running on containers.  
-It is well suited to compare programming languages as it can build and deploy the various implemen  tations and run on similar infrastructure to have comparable outputs.
+It is well suited to compare programming languages as it can build and deploy the various implementations and run on similar infrastructure to have comparable outputs.
 
 ## When using Rainbow?
 
@@ -53,7 +53,7 @@ def main():
             logging.info('Computed {} operations'.format(count))
 ```
 
-The goal is the compute function as many times as possible in the allocated time and increment a redis key. For best results, the time spent computing should take hundreds of ms or more, so the time to update the redis key can be ignored (a few ms).
+The goal is to call the compute function as many times as possible in the allocated time and increment a redis key. For best results, the time spent computing should take hundreds of ms or more, so the time to update the redis key can be ignored (a few ms).
 
 To test an implementation, it needs to be implemented in each language to benchmark.  
 
@@ -89,8 +89,9 @@ func compute() {
 Rainbow packages the various implementations in docker images.  
 These docker images can be deployed to Kubernetes. By using dedicated nodes with identical specifications, we can compare the performance of the language.  
 
-Every time a computation is done, a redis key is incremented. The values of these keys measure the language efficiency when running on containers.
-![img/architecture.png]
+Every time a computation is done, a redis key is incremented.  
+The values of these keys measure the language efficiency when running on containers.
+![architecture](/img/architecture.png)
 
 To recap, here are the various components:
 
