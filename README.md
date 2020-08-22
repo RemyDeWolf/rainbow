@@ -91,19 +91,21 @@ These docker images can be deployed to Kubernetes. By using dedicated nodes with
 
 Every time a computation is done, a redis key is incremented.  
 The values of these keys measure the language efficiency when running on containers.  
+  
+
 ![architecture](/img/architecture.png)  
 
 To recap, here are the various components:
 
 | Name | Diff | Comments |
 | --- | --- | --- |
-| main function | language specific | Call compute and increment redis key. Time spent in main is insignificant. |
-| compute function | language specific | To implement for each language to test. Most of the time is spent here. |
-| docker image | minimal | Each docker image uses the recommended base image for the language, can be changed for testing |
-| test config | identical | Each container is doing the same computation |
-| redis key | specific | Each image is associated with one and only key |
-| k8s node | identical | Each image is assigned a pool of nodes using the same instance type |
-| Running time | identical | The containers are depoyed together and the results are fetched when the time allocated is over |
+| main function | language specific | This function keeps calling the compute function and increment the redis key. |
+| compute function | language specific | This function needs to be implemented for each language to test. Most of the time is spent here. |
+| docker image | minimal | Each docker image uses the recommended base image for the language. It can also be changed for testing. |
+| test config | identical | Each container does the same computation. |
+| redis key | specific | Each image is associated with one and only key. |
+| k8s node | identical | Each image is assigned to a pool of nodes using the same instance type. |
+| Running time | identical | The containers are depoyed together and the results are fetched when the time allocated is over. |
 
 ## Rainbow score
 
@@ -126,7 +128,7 @@ Example:
 | java | 60 |
 | go | 43 |
 
-If there are more than one test runs, the rainbow score is the average of each run.
+If there were many different runs, the rainbow score is the average of each individual Rainbow score.
 
 ## Implementations
 
