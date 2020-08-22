@@ -58,7 +58,7 @@ The goal is to call the compute function as many times as possible in the alloca
 
 To test an implementation, it needs to be implemented in each language to benchmark.  
 
-Example of python compute function for some array computation:
+Example of a python function doing some array computation:
 
 ```python
 def compute():
@@ -71,7 +71,7 @@ def compute():
             input[j]=(input[i] + j) / 2
 ```
 
-Here is the same computation implemented in go:
+Here is the same function implemented in go:
 
 ```go
 func compute() {
