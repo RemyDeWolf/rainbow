@@ -138,7 +138,7 @@ If there were many different runs, the rainbow score is the average of each indi
 
 * [nsquare](/impl/nsquare): n square operation on an array.
 * [hashtable](/impl/hashtable): hashtable random access.
-* [rwfiles](/impl/rwfiles): Write files and access them randomly.
+* [rwfiles](/impl/rwfiles): write files and access them randomly.
 
 ## How to use rainbow?
 
