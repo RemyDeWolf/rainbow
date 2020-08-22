@@ -13,4 +13,6 @@ ENV COMPUTE=$COMPUTE
 ARG BASE
 ENV BASE=$BASE
 
+RUN mkdir /data
+
 CMD ["python3", "main.py"]

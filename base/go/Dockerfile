@@ -28,5 +28,10 @@ COPY --from=builder /go/bin/main /usr/local/bin/main
 # set entrypoint
 ENTRYPOINT ["/usr/local/bin/main"]
 
+# directory for application files
+RUN mkdir /data
+RUN chown -R $USER_UID /data
+
 # switch to non-root user
 USER ${USER_UID}
+
