@@ -35,9 +35,9 @@ It is well suited to compare programming languages as it can build and deploy th
 ## How does it work?
 
 Rainbow defines an image container for each language.  
-Each image is a simple application running a main function.  
+Each image is a simple application running a **main** function, which calls a **compute** function. 
 
-Here is an example of **main** function for python:
+Here is the **main** function for python:
 
 ```python
 def main():
@@ -101,7 +101,7 @@ To recap, here are the various components:
 
 | Name | Diff | Comments |
 | --- | --- | --- |
-| main function | language specific | This function keeps calling the compute function and increment the redis key. Already implemented in the base image. |
+| main function | language specific | This function keeps calling the compute function and increments the redis key. Already implemented in the base image. |
 | compute function | language specific | This function needs to be implemented. Most of the time is spent here. |
 | docker image | minimal | Each docker image uses the recommended base image for the language. It can also be changed for testing. |
 | test configuration | identical | Defines application properties and infrastrucure (instance type, number of nodes). The configuration is the global. |
@@ -121,7 +121,9 @@ The output of a test is a list of redis key values.
 | my-impl-java | 8785 |
 | my-impl-go | 6315 |
 
-Maximum value gets 100, and other scores are relative percentages to the maximum value.
+If the test ran for 10 min, rust was able to do 14,705 computations during that time.  
+
+The maximum value gets a score of 100, and the other scores are relative percentages to the maximum value.
 
 Example:
 | Language | Rainbow Score |
