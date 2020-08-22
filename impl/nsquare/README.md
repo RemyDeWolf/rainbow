@@ -113,4 +113,4 @@ MACHINE_TYPE=e2-standard-2 (2xCPU 8GB)
 | ruby | 0.96 |
 | python | 0.64 |
 
-Maximum value gets 100, and other scores are relative percentage to maximum value.
+Maximum value is 100, see [details](/README.md#rainbow-score) for more info.
