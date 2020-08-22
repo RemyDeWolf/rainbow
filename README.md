@@ -7,10 +7,94 @@
 </tr>
 </table>
 
+## Why Rainbow?
+
+How do you compare programming languages efficiency when working with containers and microservices?  
+
+There are a lot of parameters that can impact performance when running an application in a container:
+* Startup time
+* Image size
+* Resiliency
+* CPU/Memory footprint
+* Language type: compiled or interpreted
+
+This list is not exhaustive and it's a very hard question to answer.  
+But would it be possible to have a common base and only change the language used for a similar implementation?  
+If every characteristic is a color, the idea of Rainbow is to look at the full spectrum of colors and only compare the output.  
+
+Rainbow is a framework to test and compare simple implementations running on containers.  
+It is well suited to compare programming languages as it can build and deploy the various implementations and run on similar node to have comparable outputs.
+
+## When using Rainbow?
+
+* Deciding which language to use for micro services.
+* Comparing different base docker images for one language.
+* Comparing different algorithms for the same language when running on containers.
+
+## How does it work?
+
+Rainbow defines an image container for each language.  
+Each image is a simple application running a main function.  
+
+Here is an example of **main** function for python:
+<script src="https://gist.github.com/RemyDeWolf/74a1627c3329ca95b1b39e86a011b05b.js"></script>
+
+The goal is the compute function as many times as possible in the allocated time and increment a redis key. For best results, the time spent computing should take hundreds of ms or more, so the time to update the redis key can be ignored (a few ms).
+
+To test an implementation, it needs to be implemented in each language to benchmark.  
+
+Example of python compute method for some array computation:
+<script src="https://gist.github.com/RemyDeWolf/3778f97277cdfd2c9720d0d9cc9345a7.js"></script>
+
+Here is the same computation implemented in go:
+<script src="https://gist.github.com/RemyDeWolf/b33a1eaab80d9851529dd11703e9bd90.js"></script>
+
+Rainbow packages the various implementations in docker images.  
+These docker images can be deployed to Kubernetes. By using dedicated nodes with identical specifications, we can compare the performance of the language.  
+
+Every time a computation is done, a redis key is incremented. The values of these keys measure the language efficiency when running on containers.
+![img/architecture.png]
+
+To recap, here are the various components:
+
+| Name | Diff | Comments |
+| --- | --- | --- |
+| main function | language specific | Call compute and increment redis key. Time spent in main is insignificant. |
+| compute function | language specific | To implement for each language to test. Most of the time is spent here. |
+| docker image | minimal | Each docker image uses the recommended base image for the language, can be changed for testing |
+| test config | identical | Each container is doing the same computation |
+| redis key | specific | Each image is associated with one and only key |
+| k8s node | identical | Each image is assigned a pool of nodes using the same instance type |
+| Running time | identical | The containers are depoyed together and the results are fetched when the time allocated is over |
+
+## Rainbow score
+
+The Rainbow score is a measure of the language efficiency for the implementation under test.  
+
+The output of a test is a list of redis key values.  
+
+| Redis Key | Value |
+| --- | --- |
+| my-impl-rust| 14705 |
+| my-impl-java | 8785 |
+| my-impl-go | 6315 |
+
+Maximum value gets 100, and other scores are relative percentages to the maximum value.
+
+Example:
+| Language | Rainbow Score |
+| --- | --- |
+| rust| 100 |
+| java | 60 |
+| go | 43 |
+
+If there are more than one test runs, the rainbow score is the average of each run.
+
 ## Implementations
 
 * [nsquare](/impl/nsquare): n square operation on an array.
 * [hashtable](/impl/hashtable): hashtable random access.
+* [rwfiles](/impl/rwfiles): Write files and access them randomly.
 
 ## How to use rainbow?
 
