@@ -19,8 +19,9 @@ There are a lot of parameters that can impact performance when running an applic
 * Language type: compiled or interpreted
 
 This list is not exhaustive and it's a very hard question to answer.  
-But would it be possible to have a common base and only change the language used for a similar implementation?  
-If every characteristic is a color, the idea of Rainbow is to look at the full spectrum of colors and only compare the output.  
+  
+**Would it be possible to have a common base and only change the language used for a similar implementation?**  
+If every characteristic is a color, the idea of Rainbow is to look at the full spectrum and only compare the output.  
 
 Rainbow is a framework to test and compare simple implementations running on containers.  
 It is well suited to compare programming languages as it can build and deploy the various implementations and run on similar infrastructure to have comparable outputs.
@@ -45,7 +46,7 @@ def main():
     batchSize = int(os.environ['BATCH_SIZE'])
     count = 0
     while True:
-        # the compute() method needs to be implemented
+        # the compute() function needs to be implemented
         compute.compute()
         count+=1
         if count%batchSize == 0:
@@ -57,7 +58,7 @@ The goal is to call the compute function as many times as possible in the alloca
 
 To test an implementation, it needs to be implemented in each language to benchmark.  
 
-Example of python compute method for some array computation:
+Example of python compute function for some array computation:
 
 ```python
 def compute():
