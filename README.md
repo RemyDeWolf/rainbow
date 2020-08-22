@@ -11,6 +11,7 @@
 
 * [nsquare](/impl/nsquare): n square operation on an array.
 * [hashtable](/impl/hashtable): hashtable random access.
+* [rwfiles](/impl/rwfiles): Write files and access them randomly
 
 ## How to use rainbow?
 
