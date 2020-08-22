@@ -23,7 +23,7 @@ But would it be possible to have a common base and only change the language used
 If every characteristic is a color, the idea of Rainbow is to look at the full spectrum of colors and only compare the output.  
 
 Rainbow is a framework to test and compare simple implementations running on containers.  
-It is well suited to compare programming languages as it can build and deploy the various implementations and run on similar node to have comparable outputs.
+It is well suited to compare programming languages as it can build and deploy the various implemen  tations and run on similar infrastructure to have comparable outputs.
 
 ## When using Rainbow?
 
@@ -37,17 +37,54 @@ Rainbow defines an image container for each language.
 Each image is a simple application running a main function.  
 
 Here is an example of **main** function for python:
-<script src="https://gist.github.com/RemyDeWolf/74a1627c3329ca95b1b39e86a011b05b.js"></script>
+
+```python
+def main():
+    key = 'python-{}.computed'.format(base, os.environ['COMPUTE'])
+
+    batchSize = int(os.environ['BATCH_SIZE'])
+    count = 0
+    while True:
+        # the compute() method needs to be implemented
+        compute.compute()
+        count+=1
+        if count%batchSize == 0:
+            redisClient.incr(key, batchSize)
+            logging.info('Computed {} operations'.format(count))
+```
 
 The goal is the compute function as many times as possible in the allocated time and increment a redis key. For best results, the time spent computing should take hundreds of ms or more, so the time to update the redis key can be ignored (a few ms).
 
 To test an implementation, it needs to be implemented in each language to benchmark.  
 
 Example of python compute method for some array computation:
-<script src="https://gist.github.com/RemyDeWolf/3778f97277cdfd2c9720d0d9cc9345a7.js"></script>
+
+```python
+def compute():
+    size = int(os.environ['NSQUARE_ARRAY_SIZE'])
+    input = [0] * size
+
+    # n square read/write operation
+    for i in range(size):
+        for j in range(size):
+            input[j]=(input[i] + j) / 2
+```
 
 Here is the same computation implemented in go:
-<script src="https://gist.github.com/RemyDeWolf/b33a1eaab80d9851529dd11703e9bd90.js"></script>
+
+```go
+func compute() {
+	size, _ := strconv.Atoi(os.Getenv("NSQUARE_ARRAY_SIZE"))
+	input := make([]int, size)
+
+	// n square read/write operation
+	for i := 0; i < size; i++ {
+		for j := 0; j < size; j++ {
+			input[j] = (input[i] + j) / 2
+		}
+	}
+}
+```
 
 Rainbow packages the various implementations in docker images.  
 These docker images can be deployed to Kubernetes. By using dedicated nodes with identical specifications, we can compare the performance of the language.  
