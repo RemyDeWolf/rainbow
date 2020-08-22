@@ -54,7 +54,7 @@ def main():
             logging.info('Computed {} operations'.format(count))
 ```
 
-The goal is to call the compute function as many times as possible in the allocated time and increment a redis key. For best results, the time spent computing should take hundreds of ms or more, so the time to update the redis key can be ignored (a few ms).
+The goal is to call the compute function as many times as possible in the allocated time and increment a redis key. For best results, the time spent computing should take hundreds of ms or more, so the time to update the redis key can be ignored (a few ms). If the computation is fast, set a high number for batch size.
 
 To test an implementation, it needs to be implemented in each language to benchmark.  
 
@@ -88,7 +88,7 @@ func compute() {
 ```
 
 Rainbow packages the various implementations in docker images.  
-These docker images can be deployed to Kubernetes. By using dedicated nodes with identical specifications, we can compare the performance of the language.  
+These docker images can be deployed to Kubernetes. By using dedicated worker nodes with identical specifications, we can compare the performance of the language.  
 
 Every time a computation is done, a redis key is incremented.  
 The values of these keys measure the language efficiency when running on containers.  
@@ -101,11 +101,11 @@ To recap, here are the various components:
 
 | Name | Diff | Comments |
 | --- | --- | --- |
-| main function | language specific | This function keeps calling the compute function and increment the redis key. |
-| compute function | language specific | This function needs to be implemented for each language to test. Most of the time is spent here. |
+| main function | language specific | This function keeps calling the compute function and increment the redis key. Already implemented in the base image. |
+| compute function | language specific | This function needs to be implemented. Most of the time is spent here. |
 | docker image | minimal | Each docker image uses the recommended base image for the language. It can also be changed for testing. |
-| test config | identical | Each container does the same computation. |
-| redis key | specific | Each image is associated with one and only key. |
+| test configuration | identical | Defines application properties and infrastrucure (instance type, number of nodes). The configuration is the global. |
+| redis key | specific | Each image is associated with one and only key. It contains the number of times the compute method has been executed. |
 | k8s node | identical | Each image is assigned to a pool of nodes using the same instance type. |
 | Running time | identical | The containers are depoyed together and the results are fetched when the time allocated is over. |
 
