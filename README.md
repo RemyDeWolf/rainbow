@@ -104,7 +104,7 @@ To recap, here are the various components:
 | main function | language specific | This function keeps calling the compute function and increments the redis key. Already implemented in the base image. |
 | compute function | language specific | This function needs to be implemented. Most of the time is spent here. |
 | docker image | minimal | Each docker image uses the recommended base image for the language. It can also be changed for testing. |
-| test configuration | identical | Defines application properties and infrastrucure (instance type, number of nodes). The configuration is the global. |
+| test configuration | identical | Defines application properties and infrastrucure (instance type, number of nodes). The configuration is global. |
 | redis key | specific | Each image is associated with one and only key. It contains the number of times the compute method has been executed. |
 | k8s node | identical | Each image is assigned to a pool of nodes using the same instance type. |
 | Running time | identical | The containers are depoyed together and the results are fetched when the time allocated is over. |
