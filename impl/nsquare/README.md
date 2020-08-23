@@ -103,7 +103,7 @@ MACHINE_TYPE=e2-standard-2 (2xCPU 8GB)
 <img src="./img/nsquare-ruby.png" height="680" width="1000x680"><br/>
 <img src="./img/nsquare-rust.png" height="680" width="1000x680"><br/>
 
-## Rainbow Scores
+## rainbow score
 
 | Lang | Score |
 | --- | --- |

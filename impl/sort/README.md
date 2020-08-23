@@ -86,7 +86,7 @@ Second run: array of size 1M
 <img src="./img/sort-ruby.png" height="680" width="1000x680"><br/>
 <img src="./img/sort-rust.png" height="680" width="1000x680"><br/>
 
-## Rainbow Scores
+## rainbow score
 
 | Lang | Score |
 | --- | --- |

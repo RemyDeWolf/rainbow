@@ -126,7 +126,7 @@ If the test ran for 10 min, rust was able to do 14,705 computations during that 
 The maximum value gets a score of 100, and the other scores are relative percentages to the maximum value.
 
 Example:
-| Language | Rainbow Score |
+| Language | rainbow score |
 | --- | --- |
 | rust| 100 |
 | java | 60 |
