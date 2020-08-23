@@ -1,0 +1,59 @@
+version: '3'
+services:
+  redis:
+    image: "redis:alpine"
+     # -save: disable persistence
+    command: redis-server --save
+  redis-web:
+    build: ../../redis-web/.
+    ports:
+      - "5000:5000"
+
+  java:
+    depends_on:
+      - redis
+    build: 
+      context: ../../base/java/.
+      args:
+        COMPUTE: sort
+    env_file: .env
+
+  go:
+    depends_on:
+      - redis
+    build: 
+      context: ../../base/go/.
+      args:
+        COMPUTE: sort
+    env_file: .env
+
+  rust:
+    depends_on:
+      - redis
+    build: 
+      context: ../../base/rust/.
+      args:
+        COMPUTE: sort
+    env_file: .env
+
+  # base: python:3.8-alpine, python:3.8-buster, python:3.8-slim-buster
+  python:
+    depends_on:
+      - redis
+    build: 
+      context: ../../base/python/.
+      args:
+        BASE: python:3.8
+        COMPUTE: sort
+    env_file: .env
+
+  # base: ruby:alpine, ruby:slim-buster, ruby:buster
+  ruby:
+    depends_on:
+      - redis
+    build: 
+      context: ../../base/ruby/.
+      args:
+        BASE: ruby:alpine
+        COMPUTE: sort
+    env_file: .env
