@@ -7,7 +7,7 @@
 </tr>
 </table>
 
-## Why Rainbow?
+## Why rainbow?
 
 How do you compare programming languages efficiency when working with containers and microservices?  
 
@@ -21,12 +21,12 @@ There are a lot of parameters that can impact performance when running an applic
 This list is not exhaustive and it's a very hard question to answer.  
   
 **Would it be possible to have a common base and only change the language used for a similar implementation?**  
-If every characteristic is a color, the idea of Rainbow is to look at the full spectrum and only compare the output.  
+If every characteristic is a color, the idea of rainbow is to look at the full spectrum and only compare the output.  
 
-Rainbow is a framework to test and compare simple implementations running on containers.  
+rainbow is a framework to test and compare simple implementations running on containers.  
 It is well suited to compare programming languages as it can build and deploy the various implementations and run on similar infrastructure to have comparable outputs.
 
-## When using Rainbow?
+## When using rainbow?
 
 * Deciding which language to use for micro services.
 * Comparing different base docker images for one language.
@@ -34,7 +34,7 @@ It is well suited to compare programming languages as it can build and deploy th
 
 ## How does it work?
 
-Rainbow defines an image container for each language.  
+rainbow defines an image container for each language.  
 Each image is a simple application running a **main** function, which calls a **compute** function. 
 
 Here is the **main** function for python:
@@ -87,7 +87,7 @@ func compute() {
 }
 ```
 
-Rainbow packages the various implementations in docker images.  
+rainbow packages the various implementations in docker images.  
 These docker images can be deployed to Kubernetes. By using dedicated worker nodes with identical specifications, we can compare the performance of the language.  
 
 Every time a computation is done, a redis key is incremented.  
@@ -109,9 +109,9 @@ To recap, here are the various components:
 | k8s node | identical | Each image is assigned to a pool of nodes using the same instance type. |
 | Running time | identical | The containers are depoyed together and the results are fetched when the time allocated is over. |
 
-## Rainbow score
+## rainbow score
 
-The Rainbow score is a measure of the language efficiency for the implementation under test.  
+The rainbow score is a measure of the language efficiency for the implementation under test.  
 
 The output of a test is a list of redis key values.  
 
@@ -132,7 +132,7 @@ Example:
 | java | 60 |
 | go | 43 |
 
-If there were many different runs, the rainbow score is the average of each individual Rainbow score.
+If there were many different runs, the rainbow score is the average of each individual rainbow score.
 
 ## Implementations
 
