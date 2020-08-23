@@ -1,0 +1,30 @@
+
+# duration of the tests
+duration_sec: 600
+
+# name of the cluster to create
+cluster_name: rainbow-cluster
+
+# machine type to use
+machine_type: e2-standard-2
+# number of nodes to create per image
+num_nodes: 1
+# number of replicas to deploy for each image
+replicas: 1
+
+# container environment variables
+env:
+  - name: BATCH_SIZE
+    value: "50"
+  - name: ARRAY_SIZE
+    value: "100000"
+  - name: WORKERS
+    value: "6"
+
+# images to test
+images:
+  - remydewolf/rainbow:sort-go
+  - remydewolf/rainbow:sort-java
+  - remydewolf/rainbow:sort-python
+  - remydewolf/rainbow:sort-ruby
+  - remydewolf/rainbow:sort-rust
