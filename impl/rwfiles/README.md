@@ -38,6 +38,9 @@ reads.times {
     file.close
 }
 ```
+## Results
+
+For more information about the testing methodology see [Run the rainbow tests in the cloud](/k8s/README.md).
 
 ### Test Output
 
