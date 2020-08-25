@@ -1,11 +1,10 @@
+<p align="center">
+  <img src="/img/rainbow.png">
+</p>
+  
 # rainbow
-<table>
-<tr>
-<td>
-  Compare the performance of different programming languages
-</td>
-</tr>
-</table>
+
+Compare the performance of different programming languages. 
 
 ## Why rainbow?
 
@@ -188,4 +187,5 @@ See [Run the rainbow tests in the cloud](/k8s/README.md).
 
 ## [License](LICENSE)
 
-MIT © [Remy DeWolf](https://github.com/RemyDeWolf)
+MIT © [Remy DeWolf](https://github.com/RemyDeWolf)  
+Logo design by <a href=http://www.baileykass.com/>Bailey K</a>
