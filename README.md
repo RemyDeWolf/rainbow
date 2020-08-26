@@ -139,6 +139,7 @@ If there were many different runs, the rainbow score is the average of each indi
 * [nsquare](/impl/nsquare/README.md): n square operation on an array.
 * [rwfiles](/impl/rwfiles/README.md): write files and access them randomly.
 * [sort](/impl/sort/README.md): sort an array of integers.
+* [twosum](/impl/twosum/README.md): find two numbers such that they add up to a specific target.
 
 ## How to use rainbow?
 
