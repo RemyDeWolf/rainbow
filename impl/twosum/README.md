@@ -25,3 +25,48 @@ func twoSum(nums []int, target int) []int {
 	return nil
 }
 ```
+
+## Results
+
+For more information about the testing methodology see [Run the rainbow tests in the cloud](/k8s/README.md).
+
+### Test Output
+
+First run: array of size 100k
+
+```
+BATCH_SIZE=20
+REPEAT=500
+DURATION=10min
+MACHINE_TYPE=e2-standard-2 (2xCPU 8GB)
+```
+
+| Lang | Workers | Replicas | Count |
+| --- | --- | --- | --- |
+| go | 1 | 1 | 40900 |
+| go | 1 | 2 | 38200 |
+| go | 2 | 1 | 52200 |
+| java | 1 | 1 | 150840 |
+| java | 1 | 2 | 177780 |
+| java | 2 | 1 | 153060 |
+| python | 1 | 1 | 25780 |
+| python | 1 | 2 | 26540 |
+| python | 2 | 1 | 26820 |
+| ruby | 1 | 1 | 23480 |
+| ruby | 1 | 2 | 24160 |
+| ruby | 2 | 1 | 24820 |
+| rust | 1 | 1 | 50460 |
+| rust | 1 | 2 | 55000 |
+| rust | 2 | 1 | 56120 |
+
+## rainbow score
+
+| Lang | Score |
+| --- | --- |
+| java | 100 |
+| rust | 32 |
+| go | 29 |
+| python | 15 |
+| ruby | 14 |
+
+Maximum value is 100, see [details](/README.md#rainbow-score) for more info.
