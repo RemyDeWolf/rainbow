@@ -10,7 +10,8 @@ fi
 
 yaml_file=$1
 
+region=$(get_value $yaml_file region us-west-1)
 cluster_name=$(get_value $yaml_file cluster_name rainbow-cluster)
 
 echo "Deleting the cluster $cluster_name"
-gcloud container clusters delete $cluster_name -q
+gcloud container clusters delete $cluster_name --region=$region -q
