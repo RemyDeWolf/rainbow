@@ -30,20 +30,20 @@ func twoSum(nums []int, target int) []int {
 Now let's submit this solution.  
 
 <p align="center">
-  <img src="/img/two-sum-go-submit.png" height="200" width="800">
+  <img src="/img/two-sum-go-submit.png" width="950">
 </p>  
 
 Sounds fast! Let's write a similar implementation in Python3 and submit it:  
 
 <p align="center">
-  <img src="/img/two-sum-python-submit.png" height="200" width="800">
+  <img src="/img/two-sum-python-submit.png" width="950">
 </p>  
 
 A bit slower but someway expected, python is an interpreted language.  
 Let's try java next:  
 
 <p align="center">
-  <img src="/img/two-sum-java-submit.png" height="200" width="800">
+  <img src="/img/two-sum-java-submit.png" width="950">
 </p>  
 
 OMG! Java is so fast!  
@@ -165,7 +165,6 @@ Not so … fast. As we have seen in this exercise, the memory footprint of Go i
 Using rainbow, I ran some benchmarks to compare a few languages (Go, Java, Python, Ruby, Rust) on generic implementations such as Hashtable, File IO, Sort, N-square and got various results. Rust, Java performed very well. Go did well but had a few weaknesses. The compiled languages outperformed the interpreted languages each time. All the results can be seen on the [project main page](/rainbow#implementations).  
 
 This framework is extensible. If you have a specific implementation and would like to compare the performance of different languages, feel free to implement the compute function and have fun with it. See the instructions [here](/README.md#how-to-add-an-implementation).
-
 
 ## Further readings
 * [Which programming language is fastest?](https://benchmarksgame-team.pages.debian.net/benchmarksgame/index.html)
