@@ -97,11 +97,11 @@ MACHINE_TYPE=e2-standard-2 (2xCPU 8GB)
 * 3rd spike: 4 replicas, array size 2,000
 * 4th spike: 4 replicas, array size 10,000 (n.a. for python and ruby)
 
-<img src="./img/nsquare-go.png" height="680" width="1000x680"><br/>
-<img src="./img/nsquare-java.png" height="680" width="1000x680"><br/>
-<img src="./img/nsquare-python.png" height="680" width="1000x680"><br/>
-<img src="./img/nsquare-ruby.png" height="680" width="1000x680"><br/>
-<img src="./img/nsquare-rust.png" height="680" width="1000x680"><br/>
+<img src="./img/nsquare-go.png" height="680" width="1000"><br/>
+<img src="./img/nsquare-java.png" height="680" width="1000"><br/>
+<img src="./img/nsquare-python.png" height="680" width="1000"><br/>
+<img src="./img/nsquare-ruby.png" height="680" width="1000"><br/>
+<img src="./img/nsquare-rust.png" height="680" width="1000"><br/>
 
 ## rainbow score
 

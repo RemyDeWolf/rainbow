@@ -139,11 +139,11 @@ MACHINE_TYPE=e2-standard-2 (2xCPU 8GB)
 * 4th spike: 1 replicas, write/read 5,000,000/100,000,000
 * 5th spike: 3 replicas, write/read 5,000,000/100,000,000
 
-<img src="./img/hashtable-go.png" height="680" width="1000x680"><br/>
-<img src="./img/hashtable-java.png" height="680" width="1000x680"><br/>
-<img src="./img/hashtable-python.png" height="680" width="1000x680"><br/>
-<img src="./img/hashtable-ruby.png" height="680" width="1000x680"><br/>
-<img src="./img/hashtable-rust.png" height="680" width="1000x680"><br/>
+<img src="./img/hashtable-go.png" height="680" width="1000"><br/>
+<img src="./img/hashtable-java.png" height="680" width="1000"><br/>
+<img src="./img/hashtable-python.png" height="680" width="1000"><br/>
+<img src="./img/hashtable-ruby.png" height="680" width="1000"><br/>
+<img src="./img/hashtable-rust.png" height="680" width="1000"><br/>
 
 ## rainbow score
 

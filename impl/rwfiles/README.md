@@ -98,11 +98,11 @@ MACHINE_TYPE=e2-standard-2 (2xCPU 8GB)
 * 3rd spike: 3 replicas, 100 files, 10k each, 2,000/1 read/write
 * 4th spike: 1 replica, 100 files, 10k each, 2,000/1 read/write
 
-<img src="./img/rwfiles-go.png" height="680" width="1000x680"><br/>
-<img src="./img/rwfiles-java.png" height="680" width="1000x680"><br/>
-<img src="./img/rwfiles-python.png" height="680" width="1000x680"><br/>
-<img src="./img/rwfiles-ruby.png" height="680" width="1000x680"><br/>
-<img src="./img/rwfiles-rust.png" height="680" width="1000x680"><br/>
+<img src="./img/rwfiles-go.png" height="680" width="1000"><br/>
+<img src="./img/rwfiles-java.png" height="680" width="1000"><br/>
+<img src="./img/rwfiles-python.png" height="680" width="1000"><br/>
+<img src="./img/rwfiles-ruby.png" height="680" width="1000"><br/>
+<img src="./img/rwfiles-rust.png" height="680" width="1000"><br/>
 
 ## rainbow score
 
