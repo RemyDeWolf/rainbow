@@ -63,7 +63,7 @@ To summarize:
   
 Is Java really that fast? The raw results could be a bit surprising, no? We are getting into interesting territory, **how do programming languages perform against each other?**  
 
-Let's also take a step back. Imagine, you have a PaaS to compute two-sum and you spend millions every year on cloud computing and you run your services on Python. Would that mean that you could lower your bill by 10x if you switch to Java? Well things like storage or network would be the same but you could save on the compute cost (AWS EC2, GCE, Azure VM). If you can try out different languages for your computing needs, you might be able to make a choice that would significantly reduce your VM costs.  
+Let's take a step back. Imagine, you have a PaaS to compute two-sum and you spend millions every year on cloud computing and you run your services on Python. Would that mean that you could lower your bill by 10x if you switch to Java? Well things like storage or network would be the same but you could save on the compute cost (AWS EC2, GCE, Azure VM). If you can try out different languages for your computing needs, you might be able to make a choice that would significantly reduce your VM costs.  
 
 But how would you collect the data to make that decision?  
 
@@ -91,7 +91,7 @@ rainbow is an open source project hosted on Github under the MIT license.
 
 ## How does rainbow work?
 
-The idea is simple, for each language we have a main class which calls the function to test in an infinite for loop. A batch size X is set, and every X call, a Redis counter is incremented to keep track of the number of computations done by each language.  
+The idea is simple, for each language, there is a main class which calls the function to test in an infinite loop. A batch size X is set, and every X call, a Redis counter is incremented by X to keep track of the number of computations done by each language.  
 
 Every image is deployed on a similar node (same VM type) and can run as many replicas as needed to maximize the throughput.
 This architecture provides a fair ground and rewards a language that can maximize the properties of containerization.  
@@ -130,7 +130,7 @@ Now that we have our docker images, we can deploy them to a Kubernetes cluster. 
 
 Let's try multiple combinations of workers/replicas and for each run the benchmark for 10 minutes. Count is the number of times, the compute method was called.
 
-| Lang | Workers | CPU(cores) | MEMORY(bytes) | Replicas | Count |
+| Lang | Workers | Replicas | CPU(cores) | MEMORY(bytes) | Count |
 | --- | --- | --- | --- | --- | --- |
 | go | 1 | 1 | 1108m | 6Mi | 40900 |
 | go | 1 | 2 | 1898m | 12Mi | 38200 |
