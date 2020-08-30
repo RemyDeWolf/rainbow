@@ -3,14 +3,13 @@ mod compute;
 extern crate redis;
 extern crate uuid;
 extern crate rand;
-extern crate threadpool;
 
 use std::env;
 use compute::do_compute;
 use log::Level;
-use threadpool::ThreadPool;
 
-use std::sync::Barrier;
+use std::sync::{Arc, Barrier};
+use std::thread;
 
 #[macro_use]
 extern crate log;
@@ -25,17 +24,20 @@ fn main() {
     };
     info!("workers: {}", workers);
 
-    // create a barrier that wait for the thread to complete
-    // in our case, we just let them run as long as allowed
-    let barrier = Barrier::new(2);
-
-    let pool = ThreadPool::new(workers);
+    let mut handles = Vec::with_capacity(workers);
+    let barrier = Arc::new(Barrier::new(workers));
     for n in 0..workers {
-        pool.execute(move || {
-            run_compute(n)
-        });
+        let c = barrier.clone();
+        handles.push(thread::spawn(move|| {
+            run_compute(n);
+            c.wait();
+        }));
     }
-    barrier.wait();
+
+    // Wait for other threads to finish.
+    for handle in handles {
+        handle.join().unwrap();
+    }
 }
 
 fn run_compute(n: usize) {
@@ -51,10 +53,8 @@ fn run_compute(n: usize) {
     let client = redis::Client::open("redis://@redis:6379").unwrap();
     let mut conn = client.get_connection().unwrap();
 
-    let batch_size: i32 = match env::var_os("BATCH_SIZE") {
-        Some(val) => val.into_string().unwrap().parse().unwrap_or(0),
-        None => panic!("BATCH_SIZE is not defined in the environment")
-    };
+    let max_compute: i32 = env::var("MAX_COMPUTE").unwrap_or("0".to_string()).parse().unwrap();
+    let batch_size: i32 = env::var("BATCH_SIZE").unwrap_or("1".to_string()).parse().unwrap();
 
     let mut count = 0;
     loop {
@@ -63,6 +63,9 @@ fn run_compute(n: usize) {
         if count%batch_size == 0 {
             redis::cmd("INCRBY").arg(&key).arg(batch_size.to_string()).execute(&mut conn);
             info!("[{}] Computed {} operations", n, count);
+        }
+        if max_compute!=0 && count>=max_compute {
+            break;
         }
     }
 }

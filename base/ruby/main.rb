@@ -15,6 +15,7 @@ $redis = Redis.new(host: "redis", :reconnect_attempts => 10, :reconnect_delay =>
 
 $batchSize = ENV['BATCH_SIZE'].to_i
 workers = (ENV['WORKERS'] || '1').to_i
+$max_compute = (ENV['MAX_COMPUTE'] || '0').to_i
 
 def run_compute(n)
     $logger.info("Starting worker #{n}")
@@ -25,6 +26,9 @@ def run_compute(n)
         if (count % $batchSize == 0) then
             $redis.incrby($key, $batchSize)
             $logger.info("[#{n}] Computed #{count} operations")
+        end
+        if ($max_compute!=0 && count>=$max_compute) then
+            break
         end
     end
 end

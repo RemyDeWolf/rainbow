@@ -22,6 +22,7 @@ func main() {
 	})
 	batchSize, _ := strconv.Atoi(getEnv("BATCH_SIZE", "1"))
 	workers, _ := strconv.Atoi(getEnv("WORKERS", "1"))
+	maxCompute, _ := strconv.Atoi(getEnv("MAX_COMPUTE", "0"))
 
 	var wg sync.WaitGroup
 
@@ -35,7 +36,11 @@ func main() {
 				rdb.IncrBy(ctx, key, int64(batchSize))
 				log.Printf("[%v] Computed %v operations", n, count)
 			}
+			if maxCompute > 0 && count >= maxCompute {
+				break
+			}
 		}
+		wg.Done()
 	}
 
 	//create the go routines

@@ -29,13 +29,14 @@ public class Main {
 
         int batchSize = Integer.parseInt(System.getenv("BATCH_SIZE"));
         int workers = Integer.parseInt(System.getenv().getOrDefault("WORKERS", "1"));
+        int maxCompute = Integer.parseInt(System.getenv().getOrDefault("MAX_COMPUTE", "0"));
 
         if (workers<=1) {
-            runCompute(0, batchSize, jedis, key);
+            runCompute(0, batchSize, maxCompute, jedis, key);
         }else{
             ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(workers);
             for (int i = 1; i <= workers; i++) {
-                Task task = new Task(i, batchSize, jedis, key);
+                Task task = new Task(i, batchSize, maxCompute, jedis, key);
                 executor.execute(task);
             }
             executor.shutdown();
@@ -45,20 +46,22 @@ public class Main {
     public class Task implements Runnable {
         private int n;
         private int batchSize;
+        private int maxCompute;
         private Jedis jedis;
         private String key;
 
-        public Task(int n, int batchSize, Jedis jedis, String key) {
+        public Task(int n, int batchSize, int maxCompute, Jedis jedis, String key) {
             this.n = n;
             this.batchSize = batchSize;
+            this.maxCompute = maxCompute;
             this.jedis = jedis;
             this.key = key;
         }
         public void run() {
-            runCompute(n, batchSize, jedis, key);
+            runCompute(n, batchSize, maxCompute, jedis, key);
         }
     }
-    private void runCompute(int n, int batchSize, Jedis jedis, String key){
+    private void runCompute(int n, int batchSize, int maxCompute, Jedis jedis, String key){
         LOGGER.info(String.format("Starting worker [%s]", n));
         int count = 0;
         while (true){
@@ -71,6 +74,9 @@ public class Main {
             if (count%batchSize == 0){
                 jedis.incrBy(key, batchSize);
                 LOGGER.info(String.format("[%s] Computed %s operations", n, count));
+            }
+            if (maxCompute!=0 && count >= maxCompute){
+                break;
             }
         }
     }
