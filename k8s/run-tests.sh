@@ -27,8 +27,14 @@ echo "Flushing all redis keys"
 kubectl exec -it deployment/redis redis-cli flushall
 
 # create the deployments for the images to test
-echo "Creating the test deployments"
+type=$(get_value $yaml_file type pod)
+echo "Creating the test ${type}s"
 helm template -f $yaml_file . |  kubectl create -f -
+
+if [ "$type"="job" ]; then
+    echo "jobs started, exiting"
+    exit 0
+fi
 
 duration_sec=$(get_value $yaml_file duration_sec 600)
 echo `date +"%r"` "Running the tests for $duration_sec sec"

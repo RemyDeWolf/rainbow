@@ -1,22 +1,19 @@
 {{- $type := .Values.type | default "pod" -}}
-{{ if eq $type "pod" }}
+{{ if eq $type "job" }}
 
 {{- $root := . -}}
 
 {{- range $image := .Values.images }}
   {{ $app := (split ":" $image)._1  | replace "." "-" }}
 ---
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: batch/v1
+kind: Job
 metadata:
   name: {{ $app }}
   labels:
     app: {{ $app }}
 spec:
-  replicas: {{ $root.Values.replicas }}
-  selector:
-    matchLabels:
-      app: {{ $app }}
+  completions: {{ $root.Values.replicas }}
   template:
     metadata:
       labels:
@@ -24,6 +21,7 @@ spec:
     spec:
       nodeSelector:
         runner: {{ $app }}
+      restartPolicy: Never
       containers:
       - name: {{ $app }}
         image: {{ $image }}
@@ -37,5 +35,4 @@ spec:
           value: "{{ $envvar.value }}"
         {{- end }}
 {{- end }}
-
 {{- end }}
