@@ -31,7 +31,7 @@ type=$(get_value $yaml_file type pod)
 echo "Creating the test ${type}s"
 helm template -f $yaml_file . |  kubectl create -f -
 
-if [ "$type"="job" ]; then
+if [ "$type" = "job" ]; then
     echo "jobs started, exiting"
     exit 0
 fi
