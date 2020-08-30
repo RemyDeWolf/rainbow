@@ -128,19 +128,19 @@ Now, that we have the source code, let's package them in a docker image and buil
 
 Now that we have our docker images, we can deploy them to a Kubernetes cluster. For simplicity and affordability, we will use Google Kubernetes Engine (GKE) and create 3 nodes using the same machine type: e2-standard-2 (2xCPU, 8GB). Each pod is assigned to a node (using node labels).  
 
-Let's try multiple combinations of workers/replicas and for each run the benchmark for 10 minutes. Count is the number of times, the compute method was called.
+Let's try multiple combinations of workers/replicas and for each run the benchmark for **10 minutes**. Count is the number of times the two-sum method was called.
 
-| Lang | Workers | Replicas | CPU(cores) | MEMORY(bytes) | Count |
+| Lang | Workers | Replicas | CPU(cores) | MEMORY(bytes) | Count(millions) |
 | --- | --- | --- | --- | --- | --- |
-| go | 1 | 1 | 1108m | 6Mi | 40900 |
-| go | 1 | 2 | 1898m | 12Mi | 38200 |
-| go | 2 | 1 | 1883m | 5Mi | **52200** |
-| java | 1 | 1 | 990m | 59Mi | 150840 |
-| java | 1 | 2 | 1859m | 114Mi | **177780** |
-| java | 2 | 1 | 1797m | 61Mi | 153060 |
-| python | 1 | 1 | 998m | 9Mi | 25780 |
-| python | 1 | 2 | 1923m | 16Mi | 26540 |
-| python | 2 | 1 | 998m | 9Mi | 26820 |
+| go | 1 | 1 | 1108m | 6Mi | 20.45 |
+| go | 1 | 2 | 1898m | 12Mi | 19.10 |
+| go | 2 | 1 | 1883m | 5Mi | **26.10** |
+| java | 1 | 1 | 990m | 59Mi | 75.42 |
+| java | 1 | 2 | 1859m | 114Mi | **88.89** |
+| java | 2 | 1 | 1797m | 61Mi | 76.53 |
+| python | 1 | 1 | 998m | 9Mi | 12.89 |
+| python | 1 | 2 | 1923m | 16Mi | 13.27 |
+| python | 2 | 1 | 998m | 9Mi | 13.41 |
 
 A few comments:
 * This is clearly a CPU intensive operation. Memory does not impact the overall throughput.
