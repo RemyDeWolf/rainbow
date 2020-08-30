@@ -10,7 +10,7 @@ fi
 
 yaml_file=$1
 
-region=$(get_value $yaml_file region us-west1)
+region=$(get_value $yaml_file region us-west1-a)
 cluster_name=$(get_value $yaml_file cluster_name rainbow-cluster)
 
 echo "Deleting the cluster $cluster_name"

@@ -10,7 +10,7 @@ fi
 
 yaml_file=$1
 
-region=$(get_value $yaml_file region us-west1)
+region=$(get_value $yaml_file region us-west1-a)
 #e2-standard-2 cost-optimized machine 2xCPU 8GB
 machine_type=$(get_value $yaml_file machine_type e2-standard-2)
 num_nodes=$(get_value $yaml_file num_nodes 1)
