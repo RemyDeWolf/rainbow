@@ -25,8 +25,8 @@ env:
 
 # images to test
 images:
-  - remydewolf/rainbow:rwfiles-go
-  - remydewolf/rainbow:rwfiles-java
-  - remydewolf/rainbow:rwfiles-python
-  - remydewolf/rainbow:rwfiles-ruby
-  - remydewolf/rainbow:rwfiles-rust
+  - docker.pkg.github.com/remydewolf/rainbow/rwfiles-go
+  - docker.pkg.github.com/remydewolf/rainbow/rwfiles-java
+  - docker.pkg.github.com/remydewolf/rainbow/rwfiles-python
+  - docker.pkg.github.com/remydewolf/rainbow/rwfiles-ruby
+  - docker.pkg.github.com/remydewolf/rainbow/rwfiles-rust

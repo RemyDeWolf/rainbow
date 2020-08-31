@@ -70,3 +70,18 @@ MACHINE_TYPE=e2-standard-2 (2xCPU 8GB)
 | ruby | 14 |
 
 Maximum value is 100, see [details](/README.md#rainbow-score) for more info.
+
+python
+Start Time:     Sat, 29 Aug 2020 21:45:31 -0700
+Completed At:   Sat, 29 Aug 2020 21:45:58 -0700
+Duration:       27s
+
+Start Time:     Sat, 29 Aug 2020 21:45:31 -0700
+Completed At:   Sat, 29 Aug 2020 21:45:40 -0700
+Duration:       9s
+
+Start Time:     Sat, 29 Aug 2020 21:45:31 -0700
+Completed At:   Sat, 29 Aug 2020 21:45:35 -0700
+Duration:       4s
+Pods Statuses:  0 Running / 1 Succeeded / 0 Failed
+

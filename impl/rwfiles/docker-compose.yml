@@ -12,6 +12,7 @@ services:
   java:
     depends_on:
       - redis
+    image: docker.pkg.github.com/remydewolf/rainbow/rwfiles-java:latest
     build: 
       context: ../../base/java/.
       args:
@@ -21,6 +22,7 @@ services:
   go:
     depends_on:
       - redis
+    image: docker.pkg.github.com/remydewolf/rainbow/rwfiles-go:latest
     build: 
       context: ../../base/go/.
       args:
@@ -30,6 +32,7 @@ services:
   rust:
     depends_on:
       - redis
+    image: docker.pkg.github.com/remydewolf/rainbow/rwfiles-rust:latest
     build: 
       context: ../../base/rust/.
       args:
@@ -40,6 +43,7 @@ services:
   python:
     depends_on:
       - redis
+    image: docker.pkg.github.com/remydewolf/rainbow/rwfiles-python:latest
     build: 
       context: ../../base/python/.
       args:
@@ -51,6 +55,7 @@ services:
   ruby:
     depends_on:
       - redis
+    image: docker.pkg.github.com/remydewolf/rainbow/rwfiles-ruby:latest
     build: 
       context: ../../base/ruby/.
       args:

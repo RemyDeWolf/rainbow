@@ -23,8 +23,8 @@ env:
 
 # images to test
 images:
-  - remydewolf/rainbow:hashtable-go
-  - remydewolf/rainbow:hashtable-java
-  - remydewolf/rainbow:hashtable-python
-  - remydewolf/rainbow:hashtable-ruby
-  - remydewolf/rainbow:hashtable-rust
+  - docker.pkg.github.com/remydewolf/rainbow/hashtable-go
+  - docker.pkg.github.com/remydewolf/rainbow/hashtable-java
+  - docker.pkg.github.com/remydewolf/rainbow/hashtable-python
+  - docker.pkg.github.com/remydewolf/rainbow/hashtable-ruby
+  - docker.pkg.github.com/remydewolf/rainbow/hashtable-rust

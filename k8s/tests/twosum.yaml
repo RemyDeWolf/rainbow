@@ -23,8 +23,8 @@ env:
 
 # images to test
 images:
-  - remydewolf/rainbow:twosum-go
-  - remydewolf/rainbow:twosum-java
-  - remydewolf/rainbow:twosum-python
-  - remydewolf/rainbow:twosum-ruby
-  - remydewolf/rainbow:twosum-rust
+  - docker.pkg.github.com/remydewolf/rainbow/twosum-go
+  - docker.pkg.github.com/remydewolf/rainbow/twosum-java
+  - docker.pkg.github.com/remydewolf/rainbow/twosum-python
+  - docker.pkg.github.com/remydewolf/rainbow/twosum-ruby
+  - docker.pkg.github.com/remydewolf/rainbow/twosum-rust

@@ -23,8 +23,8 @@ env:
 
 # images to test
 images:
-  - remydewolf/rainbow:sort-go
-  - remydewolf/rainbow:sort-java
-  - remydewolf/rainbow:sort-python
-  - remydewolf/rainbow:sort-ruby
-  - remydewolf/rainbow:sort-rust
+  - docker.pkg.github.com/remydewolf/rainbow/sort-go
+  - docker.pkg.github.com/remydewolf/rainbow/sort-java
+  - docker.pkg.github.com/remydewolf/rainbow/sort-python
+  - docker.pkg.github.com/remydewolf/rainbow/sort-ruby
+  - docker.pkg.github.com/remydewolf/rainbow/sort-rust

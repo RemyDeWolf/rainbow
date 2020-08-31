@@ -21,8 +21,8 @@ env:
 
 # images to test
 images:
-  - remydewolf/rainbow:nsquare-go
-  - remydewolf/rainbow:nsquare-java
-  - remydewolf/rainbow:nsquare-python
-  - remydewolf/rainbow:nsquare-ruby
-  - remydewolf/rainbow:nsquare-rust
+  - docker.pkg.github.com/remydewolf/rainbow/nsquare-go
+  - docker.pkg.github.com/remydewolf/rainbow/nsquare-java
+  - docker.pkg.github.com/remydewolf/rainbow/nsquare-python
+  - docker.pkg.github.com/remydewolf/rainbow/nsquare-ruby
+  - docker.pkg.github.com/remydewolf/rainbow/nsquare-rust

@@ -20,6 +20,6 @@ spec:
         runner: main
       containers:
       - name: redis-web
-        image: remydewolf/rainbow:redis-web
+        image: docker.pkg.github.com/remydewolf/rainbow/redis-web
         ports:
         - containerPort: 5000
